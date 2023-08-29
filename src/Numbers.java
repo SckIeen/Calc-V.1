@@ -12,10 +12,19 @@ public class Numbers {
     }
 
     public Numbers(String string) {
-        String[] numbers = string.split(" ");
-        firstNumber = numbers[0];
-        secondNumber = numbers[2];
-        operator = numbers[1];
+        try {
+            String[] numbers = string.split(" ");
+            firstNumber = numbers[0];
+            secondNumber = numbers[2];
+            operator = numbers[1];
+            if (numbers.length > 3)
+            {
+                throw new NumberFormatException("Формат записи не удовлетворяет заданию. Допустим ввод 2х операнд и 1 оператора.");
+            }
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            throw new ArrayIndexOutOfBoundsException("Некорректный ввод данных.");
+        }
     }
 
     public void handlerStringInNumber(Calculate calculate) {
